@@ -30,15 +30,4 @@ jobs:
           path: ./*
           key: ${{ github.repository }}-${{ github.sha }}
       - name: Theme Pipeline
-        run: npx theme-pipeline deploy --shop-name "shop-1" -k ${{ secrets.API_KEY_SHOP_1 }} -p ${{ secrets.API_PASSWORD_SHOP_1 }} -b "${GITHUB_REF##*/}" -m "v2"
-  deploy-fr:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/cache@v3
-        id: build
-        with:
-          path: ./*
-          key: ${{ github.repository }}-${{ github.sha }}
-      - name: Theme Pipeline
-        run: npx theme-pipeline deploy --shop-name "shop-2" -k ${{ secrets.API_KEY_SHOP_2 }} -p ${{ secrets.API_PASSWORD_SHOP_2 }} -b "${GITHUB_REF##*/}" -m "v2"
+        run: npx theme-pipeline deploy --shop-name "marie-testen" -p ${{ secrets.API_PASSWORD_SHOP }} -b "${GITHUB_REF##*/}" -m "v2"

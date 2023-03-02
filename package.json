@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "shopify login --store [shop].myshopify.com && shopify theme serve"
+    "start": "shopify login --store marie-testen.myshopify.com && shopify theme serve"
   },
   "repository": {
     "type": "git",
