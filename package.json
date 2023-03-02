@@ -1,0 +1,24 @@
+{
+  "name": "theme-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "shopify login --store [shop].myshopify.com && shopify theme serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eshopguide/theme-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eshopguide/theme-template/issues"
+  },
+  "homepage": "https://github.com/eshopguide/theme-template#readme",
+  "dependencies": {
+    "@eshopguide/theme-pipeline": "^0.12.2"
+  }
+}

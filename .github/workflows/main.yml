@@ -1,0 +1,44 @@
+name: Theme Pipeline
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: npm install
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm install
+        env:
+          CI: true
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/cache@v3
+        id: build
+        with:
+          path: ./*
+          key: ${{ github.repository }}-${{ github.sha }}
+  deploy-dev:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        id: build
+        with:
+          path: ./*
+          key: ${{ github.repository }}-${{ github.sha }}
+      - name: Theme Pipeline
+        run: npx theme-pipeline deploy --shop-name "shop-1" -k ${{ secrets.API_KEY_SHOP_1 }} -p ${{ secrets.API_PASSWORD_SHOP_1 }} -b "${GITHUB_REF##*/}" -m "v2"
+  deploy-fr:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        id: build
+        with:
+          path: ./*
+          key: ${{ github.repository }}-${{ github.sha }}
+      - name: Theme Pipeline
+        run: npx theme-pipeline deploy --shop-name "shop-2" -k ${{ secrets.API_KEY_SHOP_2 }} -p ${{ secrets.API_PASSWORD_SHOP_2 }} -b "${GITHUB_REF##*/}" -m "v2"
