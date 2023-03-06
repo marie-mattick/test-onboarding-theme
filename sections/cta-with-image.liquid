@@ -1,0 +1,158 @@
+<section id="section-{{ section.id }}">
+  <div class="container">
+    <div class="cta-content">
+      {% if section.settings.title != "" %}
+        <span class="cta-content__title">{{ section.settings.title }}</span>
+      {% endif %}
+      {% if section.settings.offer_text != "" %}
+        <span class="cta-content__offer_text">{{ section.settings.offer_text }}</span>
+      {% endif %}
+      {% if section.settings.offer_description != "" %}
+        <span class="cta-content__offer_description">{{ section.settings.offer_description }}</span>
+      {% endif %}
+      {% if section.settings.link != "" and section.settings.link_text != "" %}
+        <a class="cta-content__link" href="{{ section.settings.link }}">{{ section.settings.link_text }}</a>
+      {% endif %}
+      {% if section.settings.offer_info != "" %}
+        <span class="cta-content__offer_info">{{ section.settings.offer_info }}</span>
+      {% endif %}
+    </div>
+    <img class="cta-image" src="{{ section.settings.image | img_url: "large" }}">
+  </div>
+</section>
+
+{% style %}
+  #section-{{ section.id }} .container {
+    display: flex;
+    flex-flow: {% if section.settings.image_top_mobile %}column-reverse{% else %}column{% endif %};
+  }
+
+  @media screen and (min-width: 741px) {
+    #section-{{ section.id }} .container {
+      flex-flow: {% if section.settings.image_left_desktop %}row-reverse{% else %}row{% endif %};
+    }
+  }
+
+  .cta-content {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .cta-content__title {
+    font-weight: 600;
+  }
+
+  .cta-content__offer_text {
+    font-size: 48px;
+    font-weight: 900;
+  }
+
+  .cta-content__offer_description {
+    font-weight: 900;
+  }
+
+  #section-{{ section.id }} .cta-content__link {
+    background-color: {{ section.settings.link_background_color }};
+    width: 100%;
+    padding: 5px 10px;
+    text-align: center;
+    font-weight: 700;
+    margin: 20px 0;
+    border-radius: var(--button-border-radius);
+  }
+
+  .cta-content__offer_info {
+    color: lightgrey;
+  }
+
+  .cta-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 741px) {
+    .cta-image {
+      max-width: 30%;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "CTA with image",
+  "class": "shopify-section--cta-with-image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "RUN WITH THE PACK"
+    },
+    {
+      "type": "text",
+      "id": "offer_text",
+      "label": "Offer Text",
+      "default": "GET 20% OFF"
+    },
+    {
+      "type": "text",
+      "id": "offer_description",
+      "label": "Offer Description",
+      "default": "ON YOUR NEXT ORDER OVER $50"
+    },
+    {
+      "type": "text",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Get Discount"
+    },
+    {
+      "type": "text",
+      "id": "offer_info",
+      "label": "Offer Info",
+      "default": "OFFER VALID UNTIL 24TH MARCH, 2021 *"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_left_desktop",
+      "label": "Image Left (Desktop)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "image_top_mobile",
+      "label": "Image Top (Mobile)",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "link_background_color",
+      "label": "Link Background Color",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA with image",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
