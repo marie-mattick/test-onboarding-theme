@@ -2666,6 +2666,20 @@ p + .button-group,
   color: rgb(var(--product-custom-label-2-text-color));
 }
 
+.label--red {
+  background: red;
+  color: rgb(255, 255, 255);
+}
+
+.label--green {
+  background: green;
+  color: rgb(255, 255, 255);
+}
+
+.label--yellow {
+  background: yellow;
+}
+
 .label-list {
   display: flex;
   flex-direction: column;
