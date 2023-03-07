@@ -17,7 +17,7 @@
         <span class="cta-content__offer_info">{{ section.settings.offer_info }}</span>
       {% endif %}
     </div>
-    <img class="cta-image" src="{{ section.settings.image | img_url: "large" }}">
+    {{ section.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: section.settings.image.alt, widths: '200, 300, 400, 500, 600, 700', class: "cta-image" }}
   </div>
 </section>
 
