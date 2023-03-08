@@ -45,7 +45,7 @@
 </style>
 
 <section>
-  <shop-the-look {% if section.settings.reveal_on_scroll %}reveal-on-scroll{% endif %} class="shop-the-look">
+  <shop-the-look {% if section.settings.reveal_on_scroll %}reveal-on-scroll{% endif %} class="shop-the-look {% if section.settings.boxed %} container{% endif %}">
     <div class="shop-the-look__item-list">
       {%- for block in section.blocks -%}
         {%- capture look_id -%}block-{{ section.id }}-{{ block.id }}{%- endcapture -%}
@@ -461,6 +461,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "boxed",
+      "label": "Boxed layout",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "reveal_on_scroll",
