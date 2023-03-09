@@ -1,0 +1,105 @@
+{% if product.metafields.custom.ratings.value %}
+  <section id="section-{{section.id}}" class="container">
+    <p class="heading">{{ section.settings.headline }}</p>
+
+    <div class="ratings-overall">
+      {% assign rating_count = 0.0 %}
+      {% assign rating_stars = 0.0 %}
+      {% for rating in product.metafields.custom.ratings.value %}
+        {% assign rating_count = rating_count | plus: 1 %}
+        {% assign rating_stars = rating_stars | plus: rating.stars %}
+      {% endfor %}
+      {% assign rating_stars = rating_stars | divided_by: rating_count | round: 1 %}
+
+      <span class="heading">{{ rating_stars }}</span>
+      <div class="ratings-overall__stars-count">
+        {% render 'rating-stars' with stars: rating_stars %}
+        <span class="text--subdued text--xxsmall">Based on {{ rating_count | round: 0 }} Reviews</span>
+      </div>
+    </div>
+
+    <div class="ratings-container">
+      {% for rating in product.metafields.custom.ratings.value %}
+        {% render 'rating' with stars: rating.stars, title: rating.title, text: rating.text, author: rating.author, createdAt: rating.created_at %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% style %}
+  #section-{{section.id}} {
+    color: {{ section.settings.text_color }};
+  }
+
+  #section-{{section.id}} .rating-star--disabled{
+    color: {{ section.settings.stars_disabled }};
+  }
+
+  #section-{{section.id}} .rating-star--active{
+    color: {{ section.settings.stars_active }};
+  }
+
+  .ratings-overall {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .ratings-overall__stars-count {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ratings-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .ratings-container .single-rating {
+      width: calc(50% - 20px);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ratings",
+  "class": "shopify-section--ratings",
+  "templates": ["product"],
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "stars_disabled",
+      "label": "Disabled Stars Color",
+      "default": "#707070"
+    },
+    {
+      "type": "color",
+      "id": "stars_active",
+      "label": "Active Stars Color",
+      "default": "#FFF000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ratings",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
