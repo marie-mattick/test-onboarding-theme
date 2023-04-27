@@ -64,203 +64,207 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
   }
   </script>
 
-  <script>
-    const ldJson = document.querySelector('script[type="application/ld+json"]');
-    let mergedLdJson = JSON.parse(ldJson.innerHTML);
-
-    mergedLdJson.aggregateRating = {
-      "@type": "AggregateRating",
-      "bestRating": "5.00",
-      "worstRating": "1.00",
-      "ratingValue": "4.84",
-      "reviewCount": "96",
-      "ratingCount": "96"
-    };
-
-    mergedLdJson.review = [
+    <script>
+    const script = document.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify(
       {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "productID": 6102916923551,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5.00",
+          "worstRating": "1.00",
+          "ratingValue": "4.84",
+          "reviewCount": "96",
+          "ratingCount": "96"
         },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2023-04-26",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2023-04-06",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2023-02-26",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2023-02-24",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2023-01-25",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2022-12-29",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2022-12-22",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2022-12-16",
-        "reviewBody": "Tolle Verarbeitung super Geschenk",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2022-12-15",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
-        "author": {
-          "@type": "Person",
-          "name": "unknown"
-        },
-        "datePublished": "2022-12-14",
-        "reviewBody": "",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Trusted Shops GmbH"
-        }
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2023-04-26",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2023-04-06",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2023-02-26",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2023-02-24",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2023-01-25",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2022-12-29",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2022-12-22",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2022-12-16",
+            "reviewBody": "Tolle Verarbeitung super Geschenk",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2022-12-15",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+            "author": {
+              "@type": "Person",
+              "name": "unknown"
+            },
+            "datePublished": "2022-12-14",
+            "reviewBody": "",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Trusted Shops GmbH"
+            }
+          }
+        ]
       }
-    ];
-
-    ldJson.innerHTML = JSON.stringify(mergedLdJson);
+    );
+    document.head.appendChild(script);
   </script>
 
     
