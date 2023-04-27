@@ -23,10 +23,60 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
 
     <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% endif %}</title>
 
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '96x96' }}" type="image/png">
+    {%- endif -%}
+
+    {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    {%- unless settings.heading_font.system? and settings.text_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    {%- comment -%}Preload important resources{%- endcomment -%}
+    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'vendor.js' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
+
+    {%- comment -%}
+      IMPLEMENTATION NOTE: for improving performance, Focal tries to preload images on known pages (such as blog page,
+      product or collection pages). In order to keep a main JS file size minimal, the theme also lazyloads non-essential
+      libraries (such as PhotoSwipe or Flickity) and only loads them on demand.
+    {%- endcomment -%}
+    {%- if request.page_type == 'product' -%}
+      {%- assign selected_media = product.selected_variant.featured_media | default: product.featured_media -%}
+
+      <link rel="preload" as="fetch" href="{{ product.url }}.js" crossorigin>
+
+      {%- if product.media.size > 1 -%}
+        <link rel="preload" as="script" href="{{ 'flickity.js' | asset_url }}">
+      {%- endif -%}
+    {%- endif -%}
+
+    {% render 'social-meta-tags' %}
+    {% render 'microdata-schema' %}
+    {% render 'css-variables', direction: direction %}
+    {% render 'js-variables', direction: direction %}
+
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
 
 
-    
-    <script type="application/ld+json">
+    <script type="plain/text" id="schema-product">
   {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -64,7 +114,209 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
   }
   </script>
 
-    <script>
+
+  <script>
+    const ldJson = document.querySelector('#schema-product');
+    let mergedLdJson = JSON.parse(ldJson.innerHTML);
+
+    mergedLdJson.aggregateRating = {
+      "@type": "AggregateRating",
+      "bestRating": "5.00",
+      "worstRating": "1.00",
+      "ratingValue": "4.84",
+      "reviewCount": "96",
+      "ratingCount": "96"
+    };
+
+    mergedLdJson.review = [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2023-04-26",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2023-04-06",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2023-02-26",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2023-02-24",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2023-01-25",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2022-12-29",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2022-12-22",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2022-12-16",
+        "reviewBody": "Tolle Verarbeitung super Geschenk",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2022-12-15",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "name": "Weißweinglas PUCCINI 560 ml mit persönlicher Gravur",
+        "author": {
+          "@type": "Person",
+          "name": "unknown"
+        },
+        "datePublished": "2022-12-14",
+        "reviewBody": "",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trusted Shops GmbH"
+        }
+      }
+    ];
+
+    ldJson.innerHTML = JSON.stringify(mergedLdJson);
+    ldJson.setAttribute('type', 'application/ld+json');
+  </script>
+
+  {%- comment -%}
+  <script>
     const script = document.createElement('script');
     script.setAttribute('type', 'application/ld+json');
     script.textContent = JSON.stringify(
@@ -266,59 +518,7 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
     );
     document.head.appendChild(script);
   </script>
-
-    
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
-
-    <link rel="canonical" href="{{ canonical_url }}">
-
-    {%- if settings.favicon -%}
-      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '96x96' }}" type="image/png">
-    {%- endif -%}
-
-    {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
-    <link rel="preconnect" href="https://cdn.shopify.com">
-    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
-    {%- unless settings.heading_font.system? and settings.text_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
-
-    {%- comment -%}Preload important resources{%- endcomment -%}
-    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
-    <link rel="preload" as="script" href="{{ 'vendor.js' | asset_url }}">
-    <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
-
-    {%- comment -%}
-      IMPLEMENTATION NOTE: for improving performance, Focal tries to preload images on known pages (such as blog page,
-      product or collection pages). In order to keep a main JS file size minimal, the theme also lazyloads non-essential
-      libraries (such as PhotoSwipe or Flickity) and only loads them on demand.
-    {%- endcomment -%}
-    {%- if request.page_type == 'product' -%}
-      {%- assign selected_media = product.selected_variant.featured_media | default: product.featured_media -%}
-
-      <link rel="preload" as="fetch" href="{{ product.url }}.js" crossorigin>
-
-      {%- if product.media.size > 1 -%}
-        <link rel="preload" as="script" href="{{ 'flickity.js' | asset_url }}">
-      {%- endif -%}
-    {%- endif -%}
-
-    {% render 'social-meta-tags' %}
-    {% render 'microdata-schema' %}
-    {% render 'css-variables', direction: direction %}
-    {% render 'js-variables', direction: direction %}
-
-    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
-
-    <script src="{{ 'vendor.js' | asset_url }}" defer></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer></script>
-    <script src="{{ 'custom.js' | asset_url }}" defer></script>
-
-    {{ content_for_header }}
+{%- endcomment -%}
   </head>
 
   {%- assign feature_classes = '' -%}
