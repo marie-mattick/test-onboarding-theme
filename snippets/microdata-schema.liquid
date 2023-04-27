@@ -179,6 +179,7 @@ or change the format of some info
   ]
 {%- endcapture -%}
 
+{%- comment -%}
 {% if main_entity_microdata != blank %}
   <script type="application/ld+json">
   {
@@ -187,6 +188,7 @@ or change the format of some info
   }
   </script>
 {% endif %}
+{%- endcomment -%}
 
 {% if breadcrumb_entity_microdata != blank %}
   <script type="application/ld+json">
