@@ -334,6 +334,19 @@
     },
     "72ce58c5-7151-4d64-8b7e-bd791953b927": {
       "type": "contact-form",
+      "blocks": {
+        "3f403965-e72a-4a42-b937-ecf2a315de88": {
+          "type": "text",
+          "settings": {
+            "title": "contact reason",
+            "use_long_text": false,
+            "is_required": true
+          }
+        }
+      },
+      "block_order": [
+        "3f403965-e72a-4a42-b937-ecf2a315de88"
+      ],
       "settings": {
         "title": "Contact Us",
         "content": "",
