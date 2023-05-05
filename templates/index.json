@@ -331,6 +331,21 @@
         "button_background": "rgba(0,0,0,0)",
         "button_text_color": "rgba(0,0,0,0)"
       }
+    },
+    "72ce58c5-7151-4d64-8b7e-bd791953b927": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact Us",
+        "content": "",
+        "text_1_heading": "",
+        "text_1_text": "",
+        "text_2_heading": "",
+        "text_2_text": "",
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "rgba(0,0,0,0)"
+      }
     }
   },
   "order": [
@@ -342,6 +357,7 @@
     "testimonials",
     "featured-product",
     "text-with-icons",
-    "newsletter"
+    "newsletter",
+    "72ce58c5-7151-4d64-8b7e-bd791953b927"
   ]
 }
