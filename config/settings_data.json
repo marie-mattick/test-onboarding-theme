@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "button_border_radius": 30,
@@ -50,7 +50,7 @@
     "cart_type": "drawer",
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "30",
-    "favicon": "shopify:\/\/shop_images\/hundepfote.png",
+    "favicon": "shopify://shop_images/hundepfote.png",
     "checkout_sidebar_background_color": "#f5f5f5",
     "checkout_accent_color": "#282828",
     "checkout_button_color": "#405de6",
@@ -76,9 +76,7 @@
         "block_order": [
           "message-1"
         ],
-        "custom_css": [
-
-        ],
+        "custom_css": [],
         "settings": {
           "announcement_bar_position": "non_sticky",
           "announcement_text_size": "small",
@@ -94,7 +92,7 @@
         "type": "header",
         "settings": {
           "enable_sticky_header": true,
-          "logo": "shopify:\/\/shop_images\/hundepfote.png",
+          "logo": "shopify://shop_images/hundepfote.png",
           "logo_max_width": 45,
           "mobile_logo_max_width": 30,
           "navigation_menu": "main-menu",
@@ -116,7 +114,7 @@
             "type": "text",
             "settings": {
               "title": "About our store",
-              "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.<\/p>"
+              "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>"
             }
           },
           "links": {
@@ -129,14 +127,14 @@
             "type": "newsletter",
             "settings": {
               "title": "Newsletter",
-              "content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+              "content": "<p>A short sentence describing what someone will receive by subscribing</p>"
             }
           },
           "social_media": {
             "type": "social_media",
             "settings": {
               "title": "Follow us",
-              "content": "<p>To configure social media, go to your social media settings. Change this text in the theme editor.<\/p>"
+              "content": "<p>To configure social media, go to your social media settings. Change this text in the theme editor.</p>"
             }
           }
         },
@@ -152,7 +150,7 @@
           "show_locale_selector": true,
           "show_cookie_bar": true,
           "cookie_bar_title": "Cookie policy",
-          "cookie_bar_content": "<p>I agree to the processing of my data in accordance with the conditions set out in the policy of Privacy.<\/p>"
+          "cookie_bar_content": "<p>I agree to the processing of my data in accordance with the conditions set out in the policy of Privacy.</p>"
         }
       },
       "popup": {
@@ -165,7 +163,7 @@
           "show_only_once": true,
           "image_position": "left",
           "title": "Get 10% off",
-          "content": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>"
+          "content": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
         }
       },
       "mini-cart": {
@@ -173,7 +171,7 @@
         "settings": {
           "show_order_note": true,
           "show_checkout_button": true,
-          "empty_button_link": "shopify:\/\/collections\/all",
+          "empty_button_link": "shopify://collections/all",
           "show_recommendations": true,
           "recommendations_title": "You may also like"
         }
@@ -187,7 +185,7 @@
               "icon": "picto-box",
               "custom_icon_width": 50,
               "title": "Free shipping",
-              "content": "<p>Free worldwide shipping and returns - customs and duties taxes included<\/p>"
+              "content": "<p>Free worldwide shipping and returns - customs and duties taxes included</p>"
             }
           },
           "static-text-with-icons-1": {
@@ -196,7 +194,7 @@
               "icon": "picto-phone",
               "custom_icon_width": 50,
               "title": "Customer service",
-              "content": "<p>We are available from monday to friday to answer your questions.<\/p>"
+              "content": "<p>We are available from monday to friday to answer your questions.</p>"
             }
           },
           "static-text-with-icons-2": {
@@ -205,7 +203,7 @@
               "icon": "picto-lock",
               "custom_icon_width": 50,
               "title": "Secure payment",
-              "content": "<p>Your payment information is processed securely.<\/p>"
+              "content": "<p>Your payment information is processed securely.</p>"
             }
           },
           "static-text-with-icons-3": {
@@ -214,7 +212,7 @@
               "icon": "picto-email",
               "custom_icon_width": 50,
               "title": "Contact us",
-              "content": "<p>Need to contact us ? Just send us an e-mail at info@yourstore.com<\/p>"
+              "content": "<p>Need to contact us ? Just send us an e-mail at info@yourstore.com</p>"
             }
           }
         },
@@ -236,7 +234,7 @@
           "show_section": false,
           "reveal_on_scroll": true,
           "subheading": "Subscribe to our newsletter",
-          "content": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+          "content": "<p>Promotions, new products and sales. Directly to your inbox.</p>",
           "text_position": "right",
           "text_alignment": "left",
           "text_background": "rgba(0,0,0,0)",
@@ -246,15 +244,17 @@
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "bss-b2b-0d4ed68ca6f8": {
-        "type": "shopify:\/\/apps\/bss-b2b-wholesale-solution\/blocks\/config-header\/451233f2-9631-4c49-8b6f-057e4ebcde7f",
+        "type": "shopify://apps/bss-b2b-wholesale-solution/blocks/config-header/451233f2-9631-4c49-8b6f-057e4ebcde7f",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
+      },
+      "16881471024131275657": {
+        "type": "shopify://apps/searchanise-search-filter/blocks/app-embed/d8f24ada-02b1-458a-bbeb-5bf16d5c921e",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
@@ -304,8 +304,7 @@
           "blocks": {
             "message-1": {
               "type": "message",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -339,8 +338,7 @@
           "blocks": {
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "links": {
               "type": "links",
@@ -350,13 +348,11 @@
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             },
             "social_media": {
               "type": "social_media",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -365,8 +361,7 @@
             "newsletter",
             "social_media"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       }
     },
@@ -414,8 +409,7 @@
           "blocks": {
             "message-1": {
               "type": "message",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -449,8 +443,7 @@
           "blocks": {
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "links": {
               "type": "links",
@@ -460,13 +453,11 @@
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             },
             "social_media": {
               "type": "social_media",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -475,8 +466,7 @@
             "newsletter",
             "social_media"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       }
     },
@@ -529,8 +519,7 @@
           "blocks": {
             "message-1": {
               "type": "message",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -564,8 +553,7 @@
           "blocks": {
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "links": {
               "type": "links",
@@ -575,13 +563,11 @@
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             },
             "social_media": {
               "type": "social_media",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -590,8 +576,7 @@
             "newsletter",
             "social_media"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       }
     },
@@ -641,8 +626,7 @@
           "blocks": {
             "message-1": {
               "type": "message",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -676,8 +660,7 @@
           "blocks": {
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "links": {
               "type": "links",
@@ -687,13 +670,11 @@
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             },
             "social_media": {
               "type": "social_media",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -702,8 +683,7 @@
             "newsletter",
             "social_media"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       }
     }
