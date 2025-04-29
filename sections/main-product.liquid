@@ -1,3 +1,4 @@
+{%- comment %}BSS Login{% endcomment -%}{%- assign bss_product__has_only_default_variant = false %} {% assign _variants_count = 0 %} {% assign bss_product__first_available_variant = nil %} {% assign bss_product__selected_variant = nil %} {% assign bss_product__selected_or_first_available_variant = nil %} {% assign use_variant = true %} {% for variant in product.variants %} {% capture var %} {% render 'bss-lock-condition', scope: 'subject', subject: variant, subject_parent: product, bss_lock_action: 'handle-variant-default' %} {% endcapture %} {% if var contains "true" %} {% continue %} {% endif %} {% assign _variants_count = _variants_count | plus: 1 %} {% if bss_product__first_available_variant == nil and variant.available %} {% assign bss_product__first_available_variant = variant %} {% endif %} {% if bss_product__selected_variant == nil and variant.selected %} {% assign bss_product__selected_variant = variant %} {% endif %} {% if variant == product.selected_or_first_available_variant %} {% assign bss_product__selected_or_first_available_variant = product.selected_or_first_available_variant %} {% endif %} {% endfor %} {% if _variants_count == 1 %} {% assign bss_product__has_only_default_variant = true %} {% endif %} {% if bss_product__selected_or_first_available_variant == nil %} {% assign bss_product__selected_or_first_available_variant = bss_product__first_available_variant %} {% endif -%}{%- comment %}BSS-Login{% endcomment -%}
 {%- unless template.suffix contains 'quick-buy' -%}
   <style>
     #shopify-section-{{ section.id }} {
@@ -87,7 +88,7 @@
 
   {%- capture quick_buy_product_info -%}
     <div class="quick-buy-product">
-      {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+      {%- assign featured_media = bss_product__selected_or_first_available_variant.featured_media | default: product.featured_media -%}
 
       {%- if template.suffix == 'quick-buy-drawer' -%}
         {{- featured_media | image_url: width: featured_media.width | image_tag: loading: 'lazy', sizes: '114px', widths: '114,228,342', class: 'quick-buy-product__image' -}}
@@ -111,15 +112,15 @@
           <a href="{{ product.url }}" class="product-item-meta__title">{{ product.title }}</a>
 
           <div class="product-item-meta__price-list-container" role="region" aria-live="polite">
-            <div class="price-list" data-product-price-list>
-              {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <div class="price-list" {% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', bss_lock_action: 'bss_hide_price' %} {% endcapture %} {% if bss_lock_check contains 'bss-lock-element' %}   {% else %}data-product-price-list{% endif %}>
+              {%- if bss_product__selected_or_first_available_variant.compare_at_price > bss_product__selected_or_first_available_variant.price -%}
                 <span class="price price--highlight">
                   <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
-                    {{- product.selected_or_first_available_variant.price | money_with_currency -}}
+                    {{- bss_product__selected_or_first_available_variant.price | money_with_currency -}}
                   {%- else -%}
-                    {{- product.selected_or_first_available_variant.price | money -}}
+                    {% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', bss_lock_action: 'bss_hide_price' %} {% endcapture %} {% if bss_lock_check contains 'bss-lock-element' %} {{ bss_lock_check }}  {% else %}{{- bss_product__selected_or_first_available_variant.price | money -}}{% endif %}
                   {%- endif -%}
                 </span>
 
@@ -127,9 +128,9 @@
                   <span class="visually-hidden">{{ 'product.general.regular_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
-                    {{- product.selected_or_first_available_variant.compare_at_price | money_with_currency -}}
+                    {{- bss_product__selected_or_first_available_variant.compare_at_price | money_with_currency -}}
                   {%- else -%}
-                    {{- product.selected_or_first_available_variant.compare_at_price | money -}}
+                    {{- bss_product__selected_or_first_available_variant.compare_at_price | money -}}
                   {%- endif -%}
                 </span>
               {%- else -%}
@@ -137,24 +138,24 @@
                   <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
 
                   {%- if settings.currency_code_enabled -%}
-                    {{- product.selected_or_first_available_variant.price | money_with_currency -}}
+                    {{- bss_product__selected_or_first_available_variant.price | money_with_currency -}}
                   {%- else -%}
-                    {{- product.selected_or_first_available_variant.price | money -}}
+                    {% capture bss_lock_check %} {% render 'bss-lock-condition', scope: 'subject', subject: product, subject_parent: product, variable: 'price', bss_lock_action: 'bss_hide_price' %} {% endcapture %} {% if bss_lock_check contains 'bss-lock-element' %} {{ bss_lock_check }}  {% else %}{{- bss_product__selected_or_first_available_variant.price | money -}}{% endif %}
                   {%- endif -%}
                 </span>
               {%- endif -%}
 
-              {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+              {%- if bss_product__selected_or_first_available_variant.unit_price_measurement -%}
                 <div class="price text--subdued text--xsmall">
                   <div class="unit-price-measurement">
-                    <span class="unit-price-measurement__price">{{ product.selected_or_first_available_variant.unit_price | money }}</span>
+                    <span class="unit-price-measurement__price">{{ bss_product__selected_or_first_available_variant.unit_price | money }}</span>
                     <span class="unit-price-measurement__separator">/</span>
 
-                    {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-                      <span class="unit-price-measurement__reference-value">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
+                    {%- if bss_product__selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                      <span class="unit-price-measurement__reference-value">{{ bss_product__selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
                     {%- endif -%}
 
-                    <span class="unit-price-measurement__reference-unit">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span>
+                    <span class="unit-price-measurement__reference-unit">{{ bss_product__selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span>
                   </div>
                 </div>
               {%- endif -%}
