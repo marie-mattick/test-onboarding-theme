@@ -32,7 +32,7 @@
     {%- endif -%}
   }
 
-  {%- for block in section.blocks -%}
+  {%- for block in section.blocks -%}{% comment %}start BSS Commerce Hide Price{% endcomment %}{% capture bss_lock_check %}{% render 'bss-lock-condition', scope: 'subject', subject: block, variable: 'transparent' %}{% endcapture %}{% if bss_lock_check contains 'true' %}{% continue %}<div style="display:none" class="bss-hpc-lock"></div>{% endif %}{% comment %}end BSS Commerce Hide Price{% endcomment %}
     #block-{{ section.id }}-{{ block.id }} {
       {% if block.settings.text_color == 'rgba(0,0,0,0)' %}
         {%- assign text_color_rgb = '255, 255, 255' -%}
@@ -65,7 +65,7 @@
 
       {%- capture section_content -%}
         <div class="list-collections__item-list">
-          {%- for block in section.blocks -%}
+          {%- for block in section.blocks -%}{% comment %}start BSS Commerce Hide Price{% endcomment %}{% capture bss_lock_check %}{% render 'bss-lock-condition', scope: 'subject', subject: block, variable: 'transparent' %}{% endcapture %}{% if bss_lock_check contains 'true' %}{% continue %}<div style="display:none" class="bss-hpc-lock"></div>{% endif %}{% comment %}end BSS Commerce Hide Price{% endcomment %}
             {%- capture collection_content -%}
               {%- if block.settings.subheading != blank -%}
                 <p class="heading heading--small" {% if section.settings.reveal_on_scroll %}reveal{% endif %}>{{ block.settings.subheading | escape }}</p>
