@@ -1,0 +1,21 @@
+<div class="single-rating">
+    <div class="single-rating__title-container">
+        {% render 'rating-stars' with stars: stars %}
+        <span class="single-rating__title heading--small">{{ title }}</span>
+    </div>
+    <p>{{ text }}</p>
+    <p class="text--subdued text--xxsmall">
+        {{ author }} - {{ createdAt | date: '%d %B, %Y' }}
+    </p>
+</div>
+
+{% style %}
+  .single-rating__title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .single-rating__title {
+    margin-left: 8px;
+  }
+{% endstyle %}
