@@ -1,0 +1,137 @@
+<section class="container faq-with-icons">
+    {% for block in section.blocks %}  
+    {% case block.type %}
+      {% when 'faq' %}  
+        {%- render 'faq', block: block -%}
+    {% endcase %} 
+  {% endfor %}
+</section>
+
+{% style %}
+  .faq-with-icons .faq:not(:first-child) {
+    margin-top: {{ section.settings.faq_margin }}px;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQ with Icons",
+  "class": "shopify-section--faq-with-icons",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        
+        {
+            "type": "select",
+            "id": "icon",
+            "label": "Icon",
+            "options": [
+              {
+                "value": "arrow-down",
+                "label": "Arrow down"
+              },
+              {
+                "value": "arrow-down-circle",
+                "label": "Arrow down circle"
+              },
+              {
+                "value": "arrow-long-down",
+                "label": "Arrow long down"
+              },
+              {
+                "value": "double-down",
+                "label": "Double down"
+              },
+              {
+                "value": "question-mark-circle",
+                "label": "Question mark circle"
+              }
+            ],
+            "default": "question-mark-circle"
+          },
+        {
+          "type": "header",
+          "content": "Question"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frage"
+        },
+        {
+          "type": "color",
+          "id": "question_color",
+          "label": "Question text color"
+        },
+        {
+          "type": "color",
+          "id": "question_bg_color",
+          "label": "Question background color"
+        },
+        {
+          "type": "range",
+          "id": "question_font_size",
+          "label": "Question font size",
+          "min": 0.8,
+          "max": 1.6,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1
+        },
+        {
+          "type": "header",
+          "content": "Answer"
+        },
+        {
+          "type": "text",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Antwort"
+        },
+        {
+          "type": "color",
+          "id": "answer_color",
+          "label": "Answer text color"
+        },
+        {
+          "type": "range",
+          "id": "answer_font_size",
+          "label": "Answer font size",
+          "min": 0.8,
+          "max": 1.6,
+          "step": 0.1,
+          "unit": "rem",
+          "default": 1
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+        "type": "range",
+        "id": "faq_margin",
+        "label": "Distance between blocks",
+        "min": 1,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "default": 4
+      }
+  ],
+  "presets": [
+    {
+      "name": "FAQ with Icons",
+      "blocks": [
+        {
+          "type": "faq"
+        }
+      ],
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

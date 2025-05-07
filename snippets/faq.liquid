@@ -1,0 +1,36 @@
+<div id="faq-{{ block.id }}" class="faq">
+  <button is="toggle-button" class="collapsible-toggle faq__question" aria-controls="block-{{ block.id }}-content" aria-expanded="false">
+    <span class="faq__question-text">{{ block.settings.question }}</span>
+    {%- render 'icon' with block.settings.icon, class: "faq__question-icon" -%}
+  </button>
+    <collapsible-content id="block-{{ block.id }}-content" class="collapsible">           
+      <div class="faq__answer">
+          {{ block.settings.answer }}
+      </div>
+    </collapsible-content>
+</div>
+
+{% style %}
+  #faq-{{ block.id }} .faq__question {
+    display: flex;
+    padding: 5px 10px;
+    color: {{ block.settings.question_color }};
+    background-color: {{ block.settings.question_bg_color }};
+    font-size: {{ block.settings.question_font_size }}rem;
+    border-radius: var(--block-border-radius);
+  }
+
+  .faq__question-icon {
+    align-self: flex-start;
+  }
+
+  #faq-{{ block.id }} .faq__answer {
+    padding: 5px 10px;
+    color: {{ block.settings.answer_color }};
+    font-size: {{ block.settings.answer_font_size }}rem;
+  }
+
+  .faq__question-text {
+    flex-grow: 1;
+  }
+{% endstyle %}
