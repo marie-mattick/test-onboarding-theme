@@ -1,0 +1,151 @@
+<section id="section-{{section.id}}" class="container">
+  <div class="product-reco__background">
+    {% if section.settings.image %}
+      {{
+        section.settings.image
+        | image_url: width: 700
+        | image_tag:
+          loading: 'lazy',
+          alt: section.settings.image.alt,
+          widths: '200, 300, 400, 500, 600, 700',
+          class: 'product-reco__image'
+      }}
+    {% endif %}
+  </div>
+  <div class="product-reco__content">
+    {% if section.settings.title != "" %}
+      <span class="product-reco__content-title">{{ section.settings.title }}</span>
+    {% endif %}
+    {% if section.settings.description != "" %}
+      <span>{{ section.settings.description }}</span>
+    {% endif %}
+    {% if section.settings.button_link and section.settings.button_text != "" %}
+      <a class="product-reco__content-link" href="{{ section.settings.button_link }}">
+        {{- section.settings.button_text -}}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% style %}
+  #section-{{section.id}} {
+    display: flex;
+    flex-flow: row nowrap;
+    color: {{ section.settings.text_color }};
+  }
+
+  .product-reco__background, .product-reco__image{
+    border-radius: var(--block-border-radius);
+    width: 100%;
+  }
+
+  {% if section.settings.image %}
+  #section-{{section.id}} .product-reco__image {
+   height: auto;
+   filter: brightness({{ section.settings.image_brightness }});
+  }
+  {% else %}
+  #section-{{section.id}} .product-reco__background {
+   background-color: {{ section.settings.bg_color }};
+  }
+  {% endif %}
+
+  .product-reco__content {
+    width: 100%;
+    z-index: 1;
+    margin-left: -100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-reco__content-title {
+    font-size: 38px;
+    font-weight: 900;
+  }
+
+  #section-{{section.id}} .product-reco__content-link {
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: {{ section.settings.button_bg_color }};
+    border-radius: var(--button-border-radius);
+    width: fit-content;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product Recommendation",
+  "class": "shopify-section--product-recommendation",
+  "settings": [
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Latest Shit"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Enter your description here..."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get it now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_brightness",
+      "label": "Image Brightness",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendation"
+    }
+  ]
+}
+{% endschema %}
