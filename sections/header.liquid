@@ -151,7 +151,11 @@ IMPLEMENTATION NOTE: the header in Focal is pretty complex as it allows a lot of
       <!-- LOGO PART -->
       {%- capture logo -%}
         <a class="header__logo-link" href="{{ routes.root_url }}">
-          {%- if section.settings.logo != blank -%}
+          {%- if section.settings.logo_svg != blank -%}
+            {%- capture logo_size -%}{{ section.settings.logo_max_width | at_least: section.settings.mobile_logo_max_width | times: 2 | append: 'x' }}{%- endcapture -%}
+            <span class="visually-hidden">{{ shop.name }}</span>
+            <img class="header__logo-image" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" src="{{ section.settings.logo_svg | img_url: logo_size }}" alt="{{ section.settings.logo.alt | escape }}"/>   
+          {%- elsif section.settings.logo != blank -%}
             {%- capture logo_size -%}{{ section.settings.logo_max_width | at_least: section.settings.mobile_logo_max_width | times: 2 | append: 'x' }}{%- endcapture -%}
             <span class="visually-hidden">{{ shop.name }}</span>
             <img class="header__logo-image" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" src="{{ section.settings.logo | img_url: logo_size }}" alt="{{ section.settings.logo.alt | escape }}">
@@ -401,6 +405,12 @@ SEARCH DRAWER
     {
       "type": "header",
       "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_svg",
+      "label": "SVG",
+      "info": "280 x 80px .svg recommended"
     },
     {
       "type": "image_picker",

@@ -9441,7 +9441,6 @@ input:checked + .popover__choice-label::after,
 .header__logo-link,
 .header__logo-image {
   display: block;
-  width: max-content;
 }
 
 .header__logo-text {
