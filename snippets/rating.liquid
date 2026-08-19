@@ -1,6 +1,6 @@
 <div class="single-rating">
     <div class="single-rating__title-container">
-        {% render 'rating-stars' with stars: stars %}
+        {% render 'rating-stars' with stars, stars: stars %}
         <span class="single-rating__title heading--small">{{ title }}</span>
     </div>
     <p>{{ text }}</p>
@@ -18,4 +18,13 @@
   .single-rating__title {
     margin-left: 8px;
   }
-{% endstyle %}
+{% endstyle %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'rating-stars' with stars: stars %}"
+  to: "{% render 'rating-stars' with stars, stars: stars %}"
+  position: 87..139
+{%- endcomment -%}

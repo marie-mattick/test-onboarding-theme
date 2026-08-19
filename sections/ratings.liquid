@@ -13,14 +13,14 @@
 
       <span class="heading">{{ rating_stars }}</span>
       <div class="ratings-overall__stars-count">
-        {% render 'rating-stars' with stars: rating_stars %}
+        {% render 'rating-stars' with stars, stars: rating_stars %}
         <span class="text--subdued text--xxsmall">Based on {{ rating_count | round: 0 }} Reviews</span>
       </div>
     </div>
 
     <div class="ratings-container">
       {% for rating in product.metafields.custom.ratings.value %}
-        {% render 'rating' with stars: rating.stars, title: rating.title, text: rating.text, author: rating.author, createdAt: rating.created_at %}
+        {% render 'rating' with stars, stars: rating.stars, title: rating.title, text: rating.text, author: rating.author, createdAt: rating.created_at %}
       {% endfor %}
     </div>
   </section>
@@ -103,3 +103,18 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'rating-stars' with stars: rating_stars %}"
+  to: "{% render 'rating-stars' with stars, stars: rating_stars %}"
+  position: 703..762
+- from: "{% render 'rating' with stars: rating.stars, title: rating.title, text: rating.text,
+    author: rating.author, createdAt: rating.created_at %}"
+  to: "{% render 'rating' with stars, stars: rating.stars, title: rating.title, text:
+    rating.text, author: rating.author, createdAt: rating.created_at %}"
+  position: 1009..1155
+{% endcomment %}
